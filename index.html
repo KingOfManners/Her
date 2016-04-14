@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="robots" content="noindex, nofollow">
+	<meta name="author" content="Erik Daems">
+	<meta name="description" content="Webprogrammeren">
+	
+		<title>Inloggen</title>
+</head>
+
+<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+
+<h1>The Level</h1>
+
+<form id="inlogForm" name="inlogForm">
+		
+		<label for="invoer">Voer uw gebruikersnaam en wachtwoord in</label>
+		
+		<input type="text" id="gebruikersnaam" name="gebruikersnaam" placeholder="Voer uw gebruikersnaam in">
+		<input type="password" id="wachtwoord" name="wachtwoord" placeholder="Voer uw wachtwoord in">
+
+
+		
+
+		<input id="button" type="button" value="log in" onclick="inlogScherm()">
+		<p id="fout">
+</form>
+
+<p><a href="../Herkansing/registratie.html">Nog geen account?</a></p>
+
+		<script> 
+
+		
+		var mijnGebruikersnaam = "ErikDaems";
+		var mijnWachtwoord = "wachtwoord";
+		var attempt = 3;	
+		
+		function inlogScherm() {
+		var gebruikersnaam = document.getElementById('gebruikersnaam').value;
+		var wachtwoord = document.getElementById('wachtwoord').value;
+			
+			if(gebruikersnaam == ""){
+					document.getElementById('fout').innerHTML = "Voer een gebruikersnaam in!";
+				}else {
+					if(wachtwoord==""){
+						document.getElementById('fout').innerHTML = "Voer een wachtwoord in!";
+					} else {
+						if(gebruikersnaam== mijnGebruikersnaam){
+							if(wachtwoord== mijnWachtwoord){
+								window.location.href = "../Herkansing/timeline.html" ;
+						}
+						
+						else{
+						attempt --;// Met 1 aftellen.
+						alert("U heeft nog  "+attempt+" pogingen over.");
+						// zorgt dat het veld blokkeert na 3 verkeerde pogingen.
+						if( attempt == 0){
+						document.getElementById("gebruikersnaam").disabled = true;
+						document.getElementById("wachtwoord").disabled = true;
+						document.getElementById("button").disabled = true;
+						return false;
+
+						}
+						else {
+								document.getElementById('fout').innerHTML = "U heeft een verkeerde wachtwoord ingevuld";
+							}
+						} 
+						}else {
+							document.getElementById('fout').innerHTML = "U heeft een verkeerde gebruikersnaam ingevuld";
+						} 					
+						if  (gebruikersnaam == "ErikHekman" || gebruikersnaam == "Koning" || gebruikersnaam == "Hekman" || gebruikersnaam == "Ronald" || gebruikersnaam == "RonaldVanEssen") {
+							document.getElementById('fout').innerHTML = "Deze gebruikersnaam mag niet worden gebruikt"; }
+						}
+					}
+				}
+		
+					
+
+		</script>		
+
+	
+	
+	</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="robots" content="noindex, nofollow">
+	<meta name="author" content="Erik Daems">
+	<meta name="description" content="Webprogrammeren">
+	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<link rel="stylesheet" href="lightbox/dist/css/lightbox.min.css">
+		<title>Berichten</title>
+</head>
+
+
+
+<body id="berichtenpagina">
+<div class="page">
+<nav> 
+  <ul>
+     <li><a href="../Herkansing/timeline.html">Home</a> </li>
+
+
+    <li><a href="../Herkansing/messages.html">Berichten </a></li>
+    <li><a href="../Herkansing/vrienden.html">Vrienden</a></li>
+
+    <li><a href="../Herkansing/index.html">Uitloggen</a></li>
+    
+</ul>
+</nav>
+<img src="imgs/panorama.jpg" height="300" width="1207">
+
+<div class="chatscherm">
+
+<div class="chatvrienden">
+
+<div class="chatschermDitka">
+    <a href="../Herkansing/messages.html"><img src="imgs/ditka2.png">
+     <h2> Mike <br> Ditka </h2>
+    </a>
+</div>
+
+
+<div class="chat2">
+		<a href="../Herkansing/chat2.html"><img src="imgs/durst.jpg">
+		 <h2> Fred <br> Durst </h2>
+		</a>
+</div>
+
+<div class="chat3">
+		<a href="../Herkansing/chat3.html">
+<img src="imgs/papajohn.jpg">
+		 <h2> Papa <br> John </h2>
+		</a>
+</div>
+
+
+<div class="chat4">
+		<a href="../Herkansing/chat4.html">
+<img src="imgs/bradberry.jpg">
+		 <h2> Ethan <br> Bradberry </h2>
+		</a>
+</div>
+
+
+<h2 class="naampie"> Chat - Fred Durst </h2>
+
+<div id="chatscherm">
+	<div id="berichten">
+		<div class="eersteBericht"> <p> KEEP ROLLIN'  <a class="example-image-link" href="lightbox/dist/images/durstinfo.png" data-lightbox="example-1"><img class="example-image" src="lightbox/dist/images/durst.jpg" alt="image-1"  /></a></p> </div>
+
+		<div class="tweedeBericht"> <img src="imgs/profiel1.png"> <p> Huh? </p> </div>
+
+		<div class="derdeBericht"> <p> ROLLIN' ROLLIN' ROLLIN' WHAT? <a class="example-image-link" href="lightbox/dist/images/durstinfo.png" data-lightbox="example-1"><img class="example-image" src="lightbox/dist/images/durst.jpg" alt="image-1"  /></a> </p> </div>
+
+		<div class="vierdeBericht"> <img src="imgs/profiel1.png"> <p> Wat? </p> </div>
+
+		<div class="vijfdeBericht"> 
+			<p> Koop aub mijn CD's <a class="example-image-link" href="lightbox/dist/images/durstinfo.png" data-lightbox="example-1"><img class="example-image" src="lightbox/dist/images/durst.jpg" alt="image-1"  /></a> </p> </div>
+
+		
+	</div>
+
+
+</div>
+
+<form class="schrijfBericht">
+<input type="file" onchange="previewMessageFoto()" id="berichtenFoto">
+<input type="text" id="berichtSturen" name="berichtSturen" placeholder="Schrijf wat naar je vriend(in)...">
+<input type="button" id="MessageSent" value="bericht plaatsen" onclick="messageToevoegen()">
+
+<img src id="berichtFoto" onchange="previewMessageFoto">
+<p id="berichtenfout"> </p>
+</form>
+
+</div>
+  <script src="lightbox/dist/js/lightbox-plus-jquery.min.js"></script>
+<script>
+
+//berichten
+var BerichtPlaatsen = document.getElementById('berichtenpagina');
+
+  if(BerichtPlaatsen){ 
+
+function previewMessageFoto(){
+       var preview = document.querySelector('#berichtFoto'); //selects the query named timelineFoto
+       var file    = document.querySelector('#berichtenFoto').files[0]; //sames as here
+       var reader  = new FileReader();
+
+       reader.onloadend = function () {
+           preview.src = reader.result;
+       }
+
+       if (file) {
+           reader.readAsDataURL(file); //reads the data as a URL
+       } else {
+           preview.src = "";
+       }
+  }
+
+  previewMessageFoto();  //calls the function named previewFile()
+
+
+
+  function messageToevoegen(){
+
+  var textMessage = $('#berichtSturen').val();
+  var berichtFoto = $('#berichtFoto').attr('src');
+
+  if (textMessage === "" || berichtFoto === "") {
+    $('#berichtSturen').css("borderColor", "red");
+    document.getElementById('berichtenfout').innerHTML = "Vergeet niet iets te schrijven en een foto te sturen "
+  }else{
+    $('#berichten').append('<div class="vierdeBericht">' + '<img src="../imgs/profiel1.png">' + '<a href="' + berichtFoto +'"data-lightbox="example-1"><img class="example-image" src="'+berichtFoto+'" alt="image-1"  /></a><div class="textSaying">'+ textMessage+'</div></div>');
+
+  $('#wberichtSturen').val('');
+    $('#berichtFoto').attr('src', '');
+  }
+
+  }
+}
+//einde berichten
+
+ 
+
+</script>
+
+
+
+
+
+</div>
+
+<footer>
+         &copy; Door: Erik Daems, D02 - 1677645
+</footer>
+
+</body>
+</html>
